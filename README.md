@@ -114,14 +114,19 @@ Y quedaran embebidas automaticamente aqui:
 
 ### Formulario de login
 
-![Formulario de login](docs/capturas/login.png)
+![Formulario de login](docs/screenshots/login.png)
 
+### Usuarios registrados con roles
+
+![Formulario de login](docs/screenshots/lista-admin.png)
 ### Dashboard de ADMIN
 
-![Dashboard ADMIN](docs/capturas/dashboard-admin.png)
+![Dashboard ADMIN](docs/screenshots/dashboard-admin.png)
 
-### Mensaje de acceso denegado para USER
+### Acceso denegado para USER
 
-![Acceso denegado USER](docs/capturas/acceso-denegado-user.png)
+![Acceso denegado USER](docs/screenshots/usuario-nuevo.png)
 
+### Registro de nuevo usuario en MySQL
+![Registro nuevo usuario](docs/screenshots/registro-usuario.png)
 
