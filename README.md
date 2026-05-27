@@ -47,7 +47,7 @@ App disponible en:
 
 > Importante: para que el login funcione, la contrasena en BD debe quedar hasheada con BCrypt. El flujo recomendado es crear usuarios desde `/registro`.
 
-### 4.1 Credenciales sugeridas para testing
+### 4.1 Credenciales sugeridas 
 
 - ADMIN:
   - Email: `admin@universidad.edu`
@@ -56,39 +56,11 @@ App disponible en:
   - Email: `soledad@universidad.edu`
   - Contrasena (texto claro): `sebas123`
 
-### 4.2 Pasos para cargar estos usuarios
-
-1. Abre `http://localhost:8080/registro` y registra ambos usuarios con esas credenciales.
-2. Promueve al usuario admin a rol ADMIN en MySQL:
-
-```sql
-USE estudiantes_db;
-
-UPDATE usuarios
-SET rol = 'ROLE_ADMIN', activo = 1
-WHERE email = 'admin@universidad.edu';
-
-UPDATE usuarios
-SET rol = 'ROLE_USER', activo = 1
-WHERE email = 'user@universidad.edu';
-```
-
-3. Verifica datos:
-
-```sql
-SELECT nombre, email, rol, activo
-FROM usuarios
-WHERE email IN ('admin@universidad.edu', 'user@universidad.edu');
-```
-
 ## 5) Pruebas funcionales recomendadas
 
 ### 5.1 Login
 
 - Ir a `http://localhost:8080/login`
-- Ingresar con:
-  - `admin@universidad.edu` / `Admin123!`
-  - `user@universidad.edu` / `User123!`
 
 ### 5.2 Dashboard ADMIN
 
@@ -103,14 +75,6 @@ WHERE email IN ('admin@universidad.edu', 'user@universidad.edu');
 - Debe mostrarse mensaje/pagina de acceso denegado (403)
 
 ## 6) Capturas solicitadas
-
-Guarda las imagenes en `docs/capturas/` con estos nombres:
-
-- `login.png`
-- `dashboard-admin.png`
-- `acceso-denegado-user.png`
-
-Y quedaran embebidas automaticamente aqui:
 
 ### Formulario de login
 
