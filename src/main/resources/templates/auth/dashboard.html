@@ -1,18 +1,60 @@
-<html xmlns:th="http://www.thymeleaf.org"
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-<body>
-<h1>Dashboard</h1>
-<p>Bienvenido, <span sec:authentication="name"></span></p>
-<!-- Solo visible para ADMIN -->
-<a sec:authorize="hasRole('ADMIN')" th:href="@{/admin}">
-    Panel de Administración
-</a>
-<!-- Solo visible para USER -->
-<p sec:authorize="hasRole('USER')">
-    Acceso de usuario estándar.
-</p>
-<form th:action="@{/logout}" method="post">
-    <button type="submit">Cerrar Sesión</button>
-</form>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body class="dashboard-page">
+    <div class="dashboard-shell">
+        <header class="dashboard-topbar">
+            <div>
+                <p class="section-label">Sistema académico</p>
+                <h1>Dashboard</h1>
+                <p class="dashboard-subtitle">Bienvenido, <span sec:authentication="name"></span></p>
+            </div>
+            <div class="user-chip">
+                <span sec:authentication="name"></span>
+            </div>
+        </header>
+
+        <section class="dashboard-actions">
+            <article sec:authorize="hasRole('ADMIN')" class="feature-card card-admin">
+                <div class="feature-icon">🛡️</div>
+                <h2>Administración</h2>
+                <p>Revisa el listado de usuarios y administra el sistema desde un solo lugar.</p>
+                <a th:href="@{/admin}" class="btn btn-primary">Abrir panel</a>
+            </article>
+
+            <article sec:authorize="hasRole('USER')" class="feature-card card-user">
+                <div class="feature-icon">👤</div>
+                <h2>Mi perfil</h2>
+                <p>Visualiza tu acceso como usuario y navega por las opciones disponibles.</p>
+                <span class="user-access">Acceso estándar habilitado</span>
+            </article>
+
+            <article class="feature-card card-cursos">
+                <div class="feature-icon">📚</div>
+                <h2>Cursos</h2>
+                <p>Consulta los cursos disponibles y administra tus inscripciones.</p>
+                <a th:href="@{/cursos}" class="btn btn-primary">Ver cursos</a>
+            </article>
+
+            <article class="feature-card card-estudiantes">
+                <div class="feature-icon">🎓</div>
+                <h2>Estudiantes</h2>
+                <p>Accede a la gestión de estudiantes registrados en la plataforma.</p>
+                <a th:href="@{/estudiantes}" class="btn btn-primary">Ver estudiantes</a>
+            </article>
+        </section>
+
+        <footer class="dashboard-footer">
+            <form th:action="@{/logout}" method="post" class="logout-form">
+                <button type="submit" class="btn btn-danger">Cerrar sesión</button>
+            </form>
+        </footer>
+    </div>
 </body>
 </html>

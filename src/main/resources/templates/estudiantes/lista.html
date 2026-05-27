@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -9,7 +9,10 @@
 <body>
 <div class="container">
     <h1>Lista de Estudiantes</h1>
-    <a class="button" th:href="@{/estudiantes/nuevo}">Nuevo Estudiante</a>
+    <div class="toolbar" style="display: flex; gap: 8px; margin-bottom: 16px;">
+        <a class="button" th:href="@{/estudiantes/nuevo}">Nuevo Estudiante</a>
+        <a class="button secondary" th:href="@{/dashboard}">← Volver al Dashboard</a>
+    </div>
     <table>
         <thead>
 

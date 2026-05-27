@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Administración</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body class="panel-page">
+    <div class="panel-shell">
+        <header class="panel-header">
+            <div>
+                <p class="section-label">Administración</p>
+                <h1>Panel de usuarios</h1>
+                <p class="panel-subtitle">Gestiona los usuarios registrados en la plataforma.</p>
+            </div>
+            <div class="panel-actions">
+                <a th:href="@{/dashboard}" class="btn btn-secondary">Volver al dashboard</a>
+                <form th:action="@{/logout}" method="post">
+                    <button type="submit" class="btn btn-danger">Cerrar sesión</button>
+                </form>
+            </div>
+        </header>
+
+        <section class="summary-cards">
+            <div class="summary-card">
+                <span>Total de usuarios</span>
+                <strong th:text="${#lists.size(usuarios)}">0</strong>
+            </div>
+            <div class="summary-card">
+                <span>Vista actual</span>
+                <strong>Activa</strong>
+            </div>
+        </section>
+
+        <section class="panel-card">
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Email</th>
+                            <th>Rol</th>
+                            <th>Activo</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:if="${#lists.isEmpty(usuarios)}">
+                            <td colspan="4" class="empty-state">No hay usuarios registrados.</td>
+                        </tr>
+                        <tr th:each="u : ${usuarios}">
+                            <td th:text="${u.nombre}"></td>
+                            <td th:text="${u.email}"></td>
+                            <td><span class="role-badge" th:text="${u.rol}"></span></td>
+                            <td th:text="${u.activo ? 'Sí' : 'No'}"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </div>
+</body>
+</html>
+
+

@@ -37,7 +37,7 @@ public class AuthController {
     public String dashboard(Model model, Authentication auth) {
         model.addAttribute("usuario", auth.getName());
         model.addAttribute("roles", auth.getAuthorities());
-        return "dashboard";
+        return "auth/dashboard";
     }
     @GetMapping("/admin")
     public String adminPanel(Model model) {
