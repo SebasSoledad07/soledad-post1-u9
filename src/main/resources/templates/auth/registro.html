@@ -13,14 +13,29 @@
 
             <form th:action="@{/registro}" method="post" class="login-form" th:object="${usuario}">
                 <div class="form-group">
-                    <input type="email" id="email" th:field="*{email}" required
-                           placeholder="Correo electrónico" class="form-control">
+                    <label>
+                        Nombre completo
+                        <input type="text" th:field="*{nombre}" required
+                               placeholder="Nombre completo" class="form-control">
+                    </label>
+                    <span th:if="${#fields.hasErrors('nombre')}" class="error-text" th:errors="*{nombre}"></span>
+                </div>
+
+                <div class="form-group">
+                    <label>
+                        Correo electrónico
+                        <input type="email" th:field="*{email}" required
+                               placeholder="Correo electrónico" class="form-control">
+                    </label>
                     <span th:if="${#fields.hasErrors('email')}" class="error-text" th:errors="*{email}"></span>
                 </div>
 
                 <div class="form-group">
-                    <input type="password" id="contrasenia" th:field="*{contrasenia}" required
-                           placeholder="Contraseña" class="form-control">
+                    <label>
+                        Contraseña
+                        <input type="password" th:field="*{contrasenia}" required
+                               placeholder="Contraseña" class="form-control">
+                    </label>
                     <span th:if="${#fields.hasErrors('contrasenia')}" class="error-text" th:errors="*{contrasenia}"></span>
                 </div>
 
