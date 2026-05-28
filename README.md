@@ -94,3 +94,6 @@ App disponible en:
 ### Registro de nuevo usuario en MySQL
 ![Registro nuevo usuario](docs/screenshots/registro-usuario.png)
 
+
+
+
