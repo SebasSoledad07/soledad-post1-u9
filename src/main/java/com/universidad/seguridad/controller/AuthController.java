@@ -44,4 +44,6 @@ public class AuthController {
         model.addAttribute("usuarios", service.listarTodos());
         return "admin/panel";
     }
+
+
 }

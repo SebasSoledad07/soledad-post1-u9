@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acceso Denegado</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+<div class="container" style="text-align: center; margin-top: 40px;">
+    <div style="background: #fee2e2; border: 2px solid #fecaca; border-radius: 12px; padding: 40px; max-width: 600px; margin: 0 auto;">
+        <h1 style="color: #991b1b; margin: 0 0 16px 0; font-size: 48px;">403</h1>
+        <h2 style="color: #991b1b; margin: 0 0 12px 0;">Acceso Denegado</h2>
+        <p style="color: #7c2d12; margin: 0 0 24px 0; font-size: 16px;">
+            No tienes permisos suficientes para acceder a este recurso.
+        </p>
+
+        <div style="margin: 24px 0; display: flex; gap: 12px; justify-content: center;">
+            <a th:href="@{/dashboard}" class="btn btn-primary">Volver al Dashboard</a>
+            <form th:action="@{/logout}" method="post" style="display: inline;">
+                <button type="submit" class="btn btn-danger">Cerrar Sesión</button>
+            </form>
+        </div>
+
+        <p style="color: #64748b; font-size: 14px; margin: 20px 0 0 0;">
+            Usuario autenticado: <strong sec:authentication="name"></strong><br>
+            Rol: <strong sec:authentication="principal.authorities"></strong>
+        </p>
+    </div>
+</div>
+</body>
+</html>
+
