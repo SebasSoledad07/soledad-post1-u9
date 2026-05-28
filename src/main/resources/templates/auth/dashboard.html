@@ -13,10 +13,16 @@
             <div>
                 <p class="section-label">Sistema académico</p>
                 <h1>Dashboard</h1>
-                <p class="dashboard-subtitle">Bienvenido, <span sec:authentication="name"></span></p>
+                <!-- SEGURO: th:text escapa automáticamente el contenido -->
+                <!-- Si el nombre contiene "<script>alert(1)</script>", Thymeleaf lo convierte
+                     en &lt;script&gt;alert(1)&lt;/script&gt; y el navegador lo muestra como texto -->
+                <p class="dashboard-subtitle">
+                    Bienvenido, <span th:text="${usuarioAutenticado != null ? usuarioAutenticado.nombre : 'Usuario'}"></span>
+                </p>
             </div>
             <div class="user-chip">
-                <span sec:authentication="name"></span>
+                <!-- th:text escapa el contenido: previene XSS almacenado -->
+                <span th:text="${email}"></span>
             </div>
         </header>
 
